@@ -2,6 +2,8 @@
 
 Your open source, self-hosted, end-to-end encryption cloud software.
 
+[Visit the website](https://e2ee-cloud.com/) 
+
 ### What is e2ee-cloud
 
 ------
