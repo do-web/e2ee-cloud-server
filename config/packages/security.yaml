@@ -1,0 +1,17 @@
+security:
+    providers:
+        e2ee_cloud:
+            memory:
+                users:
+                    admin: { password: '$2y$13$mXrYhFbYGHnfS3B6q2hrEu.x7vUE7s2Cprx5ntnPCw23k8uZjZcvm', roles: ['ROLE_ADMIN'] }
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            http_basic:
+                realm: Secured Area
+    encoders:
+        Symfony\Component\Security\Core\User\User: 'bcrypt'
+    access_control:
+         - { path: ^/, roles: ROLE_ADMIN }

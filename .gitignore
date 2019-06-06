@@ -1,0 +1,12 @@
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+search_index.db
+/test/
+.idea
+.DS_Store

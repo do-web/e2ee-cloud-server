@@ -1,0 +1,106 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    e2ee_cloud:
+
+        # Exclude files that dont be listed. It's regex.
+        excluded_files:
+            - .DS_Store
+            - search_index.db
+
+        # Enable search index. All data are encrypted in the db.
+        search:
+            # Only normal text and pdf files are supported
+            # Filenames are always indexed
+            index_file_ext: '.(pdf|txt|md|csv)$'
+            sqlite_file: '%kernel.project_dir%/search_index.db'
+            active: true
+
+        # You can create multiple storages, the key must be unique e.g. ftp_storage
+        # Note: if you rename the key, search index does not work anymore for indexed files.
+        storages:
+
+            local_storage:
+                name: 'Local'
+                type: 'local'
+                path: '%kernel.project_dir%/e2ee_data'
+                active: true
+
+            ftp_storage:
+                name: 'FTP'
+                type: 'ftp'
+                host: '127.0.0.1'
+                port: '21'
+                username: ''
+                password: ''
+                root: '/'
+                passive: true
+                ssl: false
+                active: false
+
+            sftp_storage:
+                name: 'sFTP'
+                type: 'sftp'
+                host: '127.0.0.1'
+                port: '22'
+                username: 'root'
+                password: 'root'
+                root: '/'
+                active: false
+
+            webdav_storage:
+                name: 'WebDAV'
+                type: 'webdav'
+                baseUri: 'webdav'
+                userName: 'webdav'
+                password: 'webdav'
+                proxy:
+                active: false
+
+            # Visit https://www.dropbox.com/developers/apps and get your "token".
+            dropbox_storage:
+                name: 'Dropbox'
+                type: 'dropbox'
+                token: ''
+                active: false
+
+            aws_s3_storage:
+                name: 'AWS'
+                type: 'aws_s3'
+                key: ''
+                secret: ''
+                region: ''
+                bucket: ''
+                active: false
+
+            google_cloud_storage:
+                name: 'Google Cloud Storage'
+                type: 'google_storage'
+                projectId: 'your-project-id'
+                keyFilePath: '%kernel.project_dir%/your_google_access.json'
+                bucket: 'your_bucket_name'
+                active: false
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
