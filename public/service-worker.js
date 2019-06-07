@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.0b5e6b1a12ddab662dcb0304896fdbb4.js"
+  "/precache-manifest.f8f3a6108d69be2cee90262fde838db6.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "e2ee-cloud-app"});
@@ -31,6 +31,6 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerRoute(/.*/, workbox.strategies.networkFirst(), 'GET');
+workbox.routing.registerRoute(/\.(css|jpg|png|svg)$/, workbox.strategies.networkFirst(), 'GET');
 workbox.routing.registerRoute(/^https:\/\/.*.googleapis.com\//, workbox.strategies.networkFirst(), 'GET');
 workbox.routing.registerRoute(/^https:\/\/fonts.gstatic.com\//, workbox.strategies.networkFirst(), 'GET');
