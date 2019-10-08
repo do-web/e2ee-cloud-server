@@ -58,6 +58,17 @@ Edit the yaml file `config/packages/security.yaml`. Under provider `e2ee_cloud` 
 
 To generate a bcrypt password run `php bin/console security:encode-password` in your project root.
 
+### Using docker
+
+------
+
+Just run `docker-compose up` in the application folder.
+Then you can access http://localhost/.
+
+Enter the default access data:
+User: admin
+Password: e2ee
+
 ### How does it work?
 
 ------

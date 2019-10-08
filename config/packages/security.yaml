@@ -3,7 +3,7 @@ security:
         e2ee_cloud:
             memory:
                 users:
-                    admin: { password: '$2y$13$mXrYhFbYGHnfS3B6q2hrEu.x7vUE7s2Cprx5ntnPCw23k8uZjZcvm', roles: ['ROLE_ADMIN'] }
+                    admin: { password: '$2y$13$zJnQci7z.86E47vxArBj1ONu/fizxPMANa9W40B1kiICOapVs3DBS', roles: ['ROLE_ADMIN'] }
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/

@@ -8,5 +8,6 @@
 ###< symfony/framework-bundle ###
 search_index.db
 /test/
+/e2ee_data/
 .idea
 .DS_Store
